@@ -1,0 +1,55 @@
+@startuml
+
+WorldObject <-- Creature
+WorldObject <-- Item
+
+class WorldObject {
+    - {static} maxid : int
+    - id : int
+    - name : int
+    - icon : int
+
+    + getID() : int
+    + getName() : string
+
+    'Отображаемая иконка объекта на карте'
+    + getIcon() : char
+}
+
+class Creature {
+    - hp : int
+    - maxhp : int
+    - attacksList : ArrayList
+
+    + getHP() : int
+    + getMaxHP() : int
+    + getAttacks() : ArrayList<Attack>
+    + Attack(target: Creature, attack: Attack)
+}
+
+class Item {
+    - weight : int
+    - size : int
+
+    + getWeight() : int
+    + getSize() : int
+}
+
+interface IUsable {
+    + Use()
+}
+
+interface IMovable {
+    'Переместить на определённое количество клеток по x и y'
+    + Move(x: int, y: int)
+
+    'Переместить в определённую клетку'
+    + Teleport(x: int, y: int)
+
+    'Может ли объект передвигаться в данный момент'
+    + isMovable() : boolean
+}
+
+'Нужен ли отдельный интерфейс для поднимаемых объектов?'
+
+@enduml
