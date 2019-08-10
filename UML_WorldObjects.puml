@@ -1,0 +1,11 @@
+@startuml
+
+class WorldObject {
+
+int getID()
+string getName()
+char getIcon()
+
+}
+
+@enduml
