@@ -4,9 +4,15 @@ WorldObject <-- Creature
 WorldObject <-- Item
 
 Item <-- Potion
+Item <-- Equipment
+
 IUsable <-- Potion
 
 Potion <-- HealingPotion
+
+IEquipable <-- Equipment
+Equipment <-- Armor
+Equipment <-- Weapon
 
 class WorldObject {
     - {static} maxid : int
@@ -22,8 +28,10 @@ class WorldObject {
 }
 
 class Creature {
-    - hp : int
-    - maxhp : int
+    'Это удобнее, так как для доспехов и прочего можно прибавочные статы также хранить в классе Stats'
+    'и при надевании/использовании предмета просто прибавлять одно к другому'
+    - stats : Stats
+
     - attacksList : ArrayList
 
     + getHP() : int
@@ -41,7 +49,8 @@ abstract class Item {
 }
 
 interface IUsable {
-    + use()
+    'Использовать предметы можно не только на себя, но и на других, если позволяет радиус'
+    + use(target: Creature)
     + getUseCost() : int
 }
 
@@ -56,6 +65,9 @@ interface IMovable {
     + isMovable() : boolean
 }
 
+interface IEquipable {
+}
+
 abstract class Potion {
     'Базовая сила действия зелья'
     - value : int
@@ -67,6 +79,20 @@ abstract class Potion {
 class HealingPotion {
     + HealingPotion(level: int, value: int, useCost: int)
 }
+
+'TODO:'
+class Equipment {
+
+}
+
+class Armor {
+
+}
+
+class Weapon {
+
+}
+'''
 
 'Нужен ли отдельный интерфейс для поднимаемых объектов?'
 
