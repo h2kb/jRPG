@@ -32,6 +32,8 @@ class Creature {
     'и при надевании/использовании предмета просто прибавлять одно к другому'
     - stats : Stats
 
+    'Текущие баффы/дебаффы на существе'
+    - effects : ArrayList<Effect>
     - attacksList : ArrayList
 
     + getHP() : int
