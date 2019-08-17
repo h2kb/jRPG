@@ -1,0 +1,21 @@
+@startuml
+
+class Stats {
+    - stats: HashMap<String, Integer>
+
+    + sub(stats2 : Stats)
+    + add(stats2 : Stats)
+    + Stats()
+}
+
+class Effect {
+    - effect : Stats
+    - target : Creature
+    - duration : int
+
+    'применить бонусы баффа/дебаффа'
+    + apply()
+    + getDuration()
+}
+
+@enduml

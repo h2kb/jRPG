@@ -14,7 +14,7 @@ IEquipable <-- Equipment
 Equipment <-- Armor
 Equipment <-- Weapon
 
-class WorldObject {
+abstract class WorldObject {
     - {static} maxid : int
     - id : int
     - name : int
@@ -43,7 +43,7 @@ class Creature {
 
     'Возможные виды атак существа'
     + getAttacks() : ArrayList<Attack>
-    + attack(target: Creature, attack: Attack)
+    + attack(target: Creature, attack: Attack) : int
 }
 
 abstract class Item {
