@@ -30,7 +30,8 @@ class WorldObject {
 class Creature {
     'Это удобнее, так как для доспехов и прочего можно прибавочные статы также хранить в классе Stats'
     'и при надевании/использовании предмета просто прибавлять одно к другому'
-    - stats : Stats
+    - mainStats : Stats
+    - additionalStats: Stats
 
     'Текущие баффы/дебаффы на существе'
     - effects : ArrayList<Effect>
@@ -38,6 +39,9 @@ class Creature {
 
     + getHP() : int
     + getMaxHP() : int
+    + getArmor() : int
+
+    'Возможные виды атак существа'
     + getAttacks() : ArrayList<Attack>
     + attack(target: Creature, attack: Attack)
 }
@@ -82,17 +86,19 @@ class HealingPotion {
     + HealingPotion(level: int, value: int, useCost: int)
 }
 
-'TODO:'
 class Equipment {
-
+    'статы, которые даёт элемент снаряжения'
+    - stats : Stats
 }
 
 class Armor {
-
+    - armor : int
 }
 
 class Weapon {
-
+    - type : int
+    - damage : int
+    - attack : Attack
 }
 '''
 
